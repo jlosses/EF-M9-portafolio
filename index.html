@@ -1,0 +1,685 @@
+<!doctype html>
+
+<html class="dark" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>JLOsses.JS | Fullstack JavaScript Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#2e3036",
+              "surface-tint": "#98cbff",
+              "on-secondary-fixed": "#2a0053",
+              "on-tertiary-fixed": "#00105c",
+              "on-tertiary": "#14267d",
+              "on-secondary-fixed-variant": "#5f249f",
+              "on-error-container": "#ffdad6",
+              "primary-container": "#00a3ff",
+              "on-primary-fixed-variant": "#004a77",
+              "inverse-primary": "#00629d",
+              "on-tertiary-container": "#192a81",
+              error: "#ffb4ab",
+              "surface-container-lowest": "#0b0e13",
+              "surface-container-high": "#272a30",
+              outline: "#88919d",
+              surface: "#111319",
+              "on-background": "#e1e2e9",
+              "surface-container": "#1d2025",
+              "on-error": "#690005",
+              "on-surface-variant": "#bec7d4",
+              "primary-fixed-dim": "#98cbff",
+              "on-tertiary-fixed-variant": "#2f3e94",
+              "tertiary-fixed-dim": "#bac3ff",
+              primary: "#98cbff",
+              "on-secondary": "#460084",
+              "on-primary-fixed": "#001d33",
+              tertiary: "#bac3ff",
+              "surface-variant": "#32353a",
+              "on-primary": "#003354",
+              "outline-variant": "#3f4852",
+              "on-surface": "#e1e2e9",
+              "surface-container-highest": "#32353a",
+              "primary-fixed": "#cfe5ff",
+              "inverse-surface": "#e1e2e9",
+              "tertiary-container": "#8796f2",
+              "surface-container-low": "#191c21",
+              "surface-bright": "#36393f",
+              "secondary-fixed-dim": "#dab9ff",
+              "on-secondary-container": "#cda2ff",
+              "secondary-fixed": "#eedbff",
+              secondary: "#dab9ff",
+              "surface-dim": "#111319",
+              "tertiary-fixed": "#dee0ff",
+              "secondary-container": "#5f249f",
+              background: "#111319",
+              "on-primary-container": "#00375a",
+              "error-container": "#93000a",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        background-color: #111319;
+        color: #e1e2e9;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+      .light body {
+        background-color: #f8f9ff;
+        color: #191c21;
+      }
+      .light .glass-nav {
+        background: rgba(248, 249, 255, 0.7);
+      }
+    </style>
+  </head>
+  <body
+    class="font-body selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <!-- TopAppBar -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-[#111319]/70 backdrop-blur-md dark:bg-[#111319]/70 light:bg-white/70 shadow-[0px_20px_40px_rgba(0,0,0,0.4)] dark:shadow-[0px_20px_40px_rgba(0,0,0,0.4)] light:shadow-sm border-b border-outline-variant/10"
+    >
+      <div
+        class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto"
+      >
+        <div
+          class="text-xl font-bold tracking-tighter text-on-surface font-['Space_Grotesk']"
+        >
+          JLOsses.JS
+        </div>
+        <div class="hidden md:flex gap-8 items-center">
+          <a
+            class="text-[#00A3FF] dark:text-[#00A3FF] light:text-primary font-bold border-b-2 border-[#00A3FF] pb-1 font-['Space_Grotesk'] tracking-tight"
+            href="#projects"
+            >Proyectos</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-['Space_Grotesk'] tracking-tight"
+            href="#stack"
+            >Stack</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-['Space_Grotesk'] tracking-tight"
+            href="#experience"
+            >Experiencia</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-on-surface transition-colors font-['Space_Grotesk'] tracking-tight"
+            href="#contact"
+            >Contacto</a
+          >
+          <div class="h-4 w-[1px] bg-outline-variant/30 mx-2"></div>
+          <div class="flex items-center gap-4">
+            <!-- Language Selector -->
+            <div
+              class="flex items-center gap-1 font-['Space_Grotesk'] text-sm font-bold"
+            >
+              <button class="text-primary">ES</button>
+              <span class="text-outline-variant">/</span>
+              <button class="text-on-surface-variant hover:text-on-surface">
+                EN
+              </button>
+            </div>
+            <!-- Theme Toggle -->
+            <button
+              class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-highest transition-colors text-on-surface-variant hover:text-on-surface"
+              onclick="
+                document.documentElement.classList.toggle('dark');
+                document.documentElement.classList.toggle('light');
+              "
+            >
+              <span class="material-symbols-outlined dark:hidden"
+                >light_mode</span
+              >
+              <span class="material-symbols-outlined hidden dark:block"
+                >dark_mode</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-24 overflow-x-hidden">
+      <!-- Hero Section -->
+      <section
+        class="relative min-h-[819px] flex items-center px-8 max-w-7xl mx-auto"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+          <div class="md:col-span-7 z-10">
+            <h1
+              class="font-headline text-5xl md:text-7xl font-bold leading-tight tracking-tighter mb-6 text-on-surface"
+            >
+              Fullstack <span class="text-primary">JavaScript</span> Developer
+            </h1>
+            <p
+              class="text-on-surface-variant text-xl md:text-2xl max-w-2xl mb-10 leading-relaxed"
+            >
+              Hola, soy José Luis, un desarrollador Fullstack que disfruta aprender, crear y mejorar cada día. Mi objetivo es construir proyectos que combinen tecnología, propósito y valor real para las personas..
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                class="flex items-center gap-2 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20"
+                href="www.linkedin.com/in/jose-luis-osses-martínez" target="_blank"
+              >
+                <span class="material-symbols-outlined">link</span>
+                LinkedIn
+              </a>
+              <a
+                class="flex items-center gap-2 bg-surface-container-highest text-on-surface px-8 py-4 rounded-xl font-bold border border-outline-variant/15 hover:bg-surface-bright transition-all"
+                href="https://github.com/jlosses"
+                target="_blank"
+              >
+                <span class="material-symbols-outlined">code</span>
+                GitHub
+              </a>
+              <a
+                class="flex items-center gap-2 bg-secondary-container text-on-secondary-container px-8 py-4 rounded-xl font-bold hover:brightness-110 transition-all"
+                href="assets/docs/CV_FH_JLOSSES_TI.docx"
+              >
+                <span class="material-symbols-outlined">download</span>
+                Descargar CV
+              </a>
+            </div>
+          </div>
+          <div class="md:col-span-5 relative">
+            <div
+              class="aspect-square rounded-full overflow-hidden border-8 border-surface-container-low dark:border-surface-container-low light:border-white shadow-2xl relative z-10 group bg-surface-container"
+            >
+              <img
+                alt="Profile Photo"
+                class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                data-alt="professional portrait of a confident male developer in a dark studio setting with cinematic soft lighting and deep shadows"
+                src="assets/img/avatar-jlosses.jpg"
+              />
+            </div>
+            <div
+              class="absolute -top-10 -right-10 w-64 h-64 bg-secondary-container/20 blur-[100px] rounded-full"
+            ></div>
+            <div
+              class="absolute -bottom-10 -left-10 w-48 h-48 bg-primary-container/20 blur-[80px] rounded-full"
+            ></div>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Section -->
+      <section class="py-24 bg-surface-container-low/30 mt-20" id="projects">
+        <div class="max-w-7xl mx-auto px-8">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4"
+          >
+            <div>
+              <span
+                class="text-primary font-bold tracking-widest uppercase text-sm mb-2 block"
+                >Portfolio</span
+              >
+              <h2
+                class="font-headline text-4xl md:text-5xl font-bold text-on-surface"
+              >
+                Proyectos Destacados
+              </h2>
+            </div>
+            <div
+              class="h-1 w-24 bg-primary rounded-full hidden md:block mb-4"
+            ></div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Project A -->
+            <div
+              class="group flex flex-col bg-surface-container-highest rounded-xl overflow-hidden shadow-xl transition-transform duration-500 hover:-translate-y-2"
+            >
+              <div class="aspect-video relative overflow-hidden">
+                <img
+                  alt="API Architecture"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src="assets/img/portafolio-simple.png"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-60"
+                ></div>
+              </div>
+              <div class="p-8 flex flex-col flex-grow">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >HTML5</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >CSS3</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                </div>
+                <h3
+                  class="font-headline text-2xl font-bold mb-4 text-on-surface"
+                >
+                  Portafolio Simple
+                </h3>
+                <p class="text-on-surface-variant mb-8 line-clamp-3">
+                  Primera incursión en la creación de una presencia online.
+                </p>
+                <div class="mt-auto flex flex-wrap gap-4">
+                  <a
+                    class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+                    href="https://jlosses.github.io/mi-portafolio/"
+                  >
+                    <span class="material-symbols-outlined">description</span>
+                    Ver Documentación/Demo
+                  </a>
+                  <a
+                    class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-all"
+                    href="https://github.com/jlosses/mi-portafolio.git"
+                  >
+                    <span class="material-symbols-outlined">terminal</span>
+                    Ver Código en GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Project B -->
+            <div
+              class="group flex flex-col bg-surface-container-highest rounded-xl overflow-hidden shadow-xl transition-transform duration-500 hover:-translate-y-2"
+            >
+              <div class="aspect-video relative overflow-hidden">
+                <img
+                  alt="Recipe App"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src="assets/img/gourmetGo.png"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-60"
+                ></div>
+              </div>
+              <div class="p-8 flex flex-col flex-grow">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >HTML5</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >CSS3</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >Bootstrap</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >TheMealDB API</span
+                  >
+                </div>
+                <h3
+                  class="font-headline text-2xl font-bold mb-4 text-on-surface"
+                >
+                  Buscador de Recetas Interactivo
+                </h3>
+                <p class="text-on-surface-variant mb-8 line-clamp-3">
+                  Resuelve el problema de la indecisión culinaria permitiendo
+                  buscar recetas por ingredientes o categorías mediante la
+                  integración de una API externa, ofreciendo detalles
+                  nutricionales y pasos de preparación.
+                </p>
+                <div class="mt-auto flex flex-wrap gap-4">
+                  <a
+                    class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+                    href="https://jlosses.github.io/EF-M4-Proyecto-Integrador-Sprint-2/" target="_blank"
+                  >
+                    <span class="material-symbols-outlined">rocket_launch</span>
+                    Ver Demo en Vivo
+                  </a>
+                  <a
+                    class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-all"
+                    href="https://github.com/jlosses/EF-M4-Proyecto-Integrador-Sprint-2.git" target="_blank"
+                  >
+                    <span class="material-symbols-outlined">terminal</span>
+                    Ver Código en GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Project C -->
+            <div
+              class="group flex flex-col bg-surface-container-highest rounded-xl overflow-hidden shadow-xl transition-transform duration-500 hover:-translate-y-2"
+            >
+              <div class="aspect-video relative overflow-hidden">
+                <img
+                  alt="API Architecture"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  src="assets/img/kanbanPro.png"
+                />
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent opacity-60"
+                ></div>
+              </div>
+              <div class="p-8 flex flex-col flex-grow">
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-3 py-1 bg-secondary-container text-on-secondary-container font-label text-xs rounded-full"
+                    >API RESTful</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >Node.js</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >Express</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >Sequelize - PostgreSQL</span
+                  >
+                  <span
+                    class="px-3 py-1 bg-surface-container text-primary font-label text-xs rounded-full"
+                    >JWT</span
+                  >
+                </div>
+                <h3
+                  class="font-headline text-2xl font-bold mb-4 text-on-surface"
+                >
+                  KanbanPro - API para Gestión de Proyectos
+                </h3>
+                <p class="text-on-surface-variant mb-8 line-clamp-3">
+                  Una API RESTful robusta diseñada para organizar flujos de
+                  trabajo mediante tableros Kanban. Implementa autenticación
+                  segura, gestión de tareas y persistencia de datos para equipos
+                  eficientes.
+                </p>
+                <div class="mt-auto flex flex-wrap gap-4">
+                  <a
+                    class="flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+                    href="#"
+                  >
+                    <span class="material-symbols-outlined">description</span>
+                    Ver Documentación/Demo
+                  </a>
+                  <a
+                    class="flex items-center gap-2 text-on-surface-variant hover:text-on-surface transition-all"
+                    href="https://github.com/jlosses/EF-M8-KanbanPro-Sprint-3.git"
+                  >
+                    <span class="material-symbols-outlined">terminal</span>
+                    Ver Código en GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Skills & Technologies Section -->
+      <section class="py-24 px-8 max-w-7xl mx-auto" id="stack">
+        <div class="text-center mb-16">
+          <h2
+            class="font-headline text-4xl md:text-5xl font-bold mb-4 italic tracking-tighter text-on-surface"
+          >
+            Stack Tecnológico
+          </h2>
+          <p class="text-on-surface-variant max-w-xl mx-auto">
+            Herramientas y lenguajes que utilizo para construir el futuro
+            digital.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+          <!-- Skill 1 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >javascript</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >JavaScript</span
+            >
+          </div>
+          <!-- Skill 2 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >deployed_code</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >React</span
+            >
+          </div>
+          <!-- Skill 3 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >terminal</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >Node.js</span
+            >
+          </div>
+          <!-- Skill 4 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >api</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >Express</span
+            >
+          </div>
+          <!-- Skill 5 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >database</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >MongoDB</span
+            >
+          </div>
+          <!-- Skill 6 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >fork_right</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >Git</span
+            >
+          </div>
+          <!-- Skill 7 -->
+          <div
+            class="bg-surface-container-low p-6 rounded-2xl flex flex-col items-center justify-center gap-4 border border-outline-variant/10 hover:bg-surface-bright hover:border-primary/30 transition-all group shadow-sm"
+          >
+            <span
+              class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary transition-colors"
+              >hub</span
+            >
+            <span
+              class="font-label text-sm font-semibold tracking-wide text-on-surface"
+              >GitHub</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section class="py-24 bg-surface-container-lowest" id="contact">
+        <div
+          class="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16"
+        >
+          <div>
+            <h2 class="font-headline text-5xl font-bold mb-6 text-on-surface">
+              Hablemos de tu próximo proyecto
+            </h2>
+            <p class="text-on-surface-variant text-lg mb-10 leading-relaxed">
+              Estoy abierto a nuevas oportunidades y colaboraciones. Si tienes
+              una idea que quieres transformar en realidad, no dudes en
+              contactarme.
+            </p>
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">mail</span>
+                </div>
+                <div>
+                  <p
+                    class="text-xs text-on-surface-variant uppercase tracking-widest font-bold"
+                  >
+                    Email
+                  </p>
+                  <p class="text-lg font-medium text-on-surface">
+                    hola@architect.js
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center text-primary"
+                >
+                  <span class="material-symbols-outlined">location_on</span>
+                </div>
+                <div>
+                  <p
+                    class="text-xs text-on-surface-variant uppercase tracking-widest font-bold"
+                  >
+                    Ubicación
+                  </p>
+                  <p class="text-lg font-medium text-on-surface">
+                    Remoto / Global
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-surface-container-low p-8 md:p-12 rounded-2xl border border-outline-variant/10 shadow-sm"
+          >
+            <form action="#" class="space-y-6">
+              <div class="space-y-2">
+                <label
+                  class="font-label text-sm font-medium text-on-surface-variant"
+                  for="name"
+                  >Nombre</label
+                >
+                <input
+                  class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface py-3 px-0 transition-all placeholder:text-on-surface-variant/40"
+                  id="name"
+                  placeholder="Tu nombre completo"
+                  type="text"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="font-label text-sm font-medium text-on-surface-variant"
+                  for="email"
+                  >Email</label
+                >
+                <input
+                  class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface py-3 px-0 transition-all placeholder:text-on-surface-variant/40"
+                  id="email"
+                  placeholder="nombre@ejemplo.com"
+                  type="email"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="font-label text-sm font-medium text-on-surface-variant"
+                  for="message"
+                  >Mensaje</label
+                >
+                <textarea
+                  class="w-full bg-surface-container-lowest border-0 border-b-2 border-outline-variant/30 focus:border-primary focus:ring-0 text-on-surface py-3 px-0 transition-all placeholder:text-on-surface-variant/40"
+                  id="message"
+                  placeholder="Cuéntame sobre tu idea..."
+                  rows="4"
+                ></textarea>
+              </div>
+              <button
+                class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-4 rounded-xl shadow-lg hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
+                type="submit"
+              >
+                Enviar Mensaje
+                <span class="material-symbols-outlined">send</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="bg-surface-container-lowest w-full py-12 border-t border-outline-variant/15"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-6 font-['Inter'] text-sm tracking-wide"
+      >
+        <div class="text-on-surface-variant">
+          © 2026 Desarrollado con ❤️ por José Luis Osses Martínez. Todos los derechos reservados.
+        </div>
+        <div class="flex gap-8">
+          <a
+            class="text-on-surface-variant hover:text-primary underline underline-offset-4 transition-all"
+            href="https://github.com/jlosses"
+            >GitHub</a
+          >
+          <a
+            class="text-on-surface-variant hover:text-primary underline underline-offset-4 transition-all"
+            href="https://www.linkedin.com/in/jose-luis-osses-martinez/"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
